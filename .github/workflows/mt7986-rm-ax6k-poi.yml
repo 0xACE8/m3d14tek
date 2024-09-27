@@ -22,10 +22,10 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  FEEDS_CONF: mt7986/ax6k/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/ax6k_poi.c0nf
-  DIY_P1_SH: mt7986/ax6k/d1y-p4r71.sh
-  DIY_P2_SH: mt7986/ax6k/d1y-p4r72.sh
+  FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/ax6k_poi.c0nf
+  DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r71.sh
+  DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
