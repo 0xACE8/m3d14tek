@@ -121,7 +121,6 @@ jobs:
       run: |
         sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_AUTHORIZED_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
         git clone --branch main https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
-        sed -i "s/o.default = 'unreachable'/o.default = 'default'/g" feeds/luci/applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/policy.js
         sed -i 's/pppoe_username/${{ secrets.PPPOE_CU_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         sed -i 's/pppoe_password/${{ secrets.PPPOE_CU_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         
