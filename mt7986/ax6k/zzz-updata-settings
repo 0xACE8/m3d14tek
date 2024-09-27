@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# WAN & MODEM
+uci -q batch <<-EOF
+  set network.globals=globals
+  set network.globals.packet_steering='2'
+  set network.packet_steering=1
+  set network.wan.username='pppoe_username'
+  set network.wan.password='pppoe_password'
+  set network.MODEM=interface
+  set network.MODEM.proto='static'
+  set network.MODEM.device='wan'
+  set network.MODEM.ipaddr='192.168.2.2'
+  set network.MODEM.netmask='255.255.255.0'
+  set network.MODEM.gateway='192.168.2.1'
+  set network.MODEM.metric='100'
+  set network.MODEM.delegate='0'
+  commit network
+EOF
+
+# syncdial
+uci -q batch <<-EOF
+  set syncdial.config=syncdial
+  set syncdial.config.syncon='1'
+  set syncdial.config.dialwait='25'
+  set syncdial.config.dialchk='0'
+  set syncdial.config.nomwan='1'
+  set syncdial.config.wanselect='wan'
+  set syncdial.config.dial_type='1'
+  set syncdial.config.wannum='3'
+  set syncdial.config.dialnum='3'
+  set syncdial.config.old_frame='1'
+  set syncdial.config.devbackup='wan'
+  set syncdial.config.bindwan='0'
+  set syncdial.config.enabled='1'
+  commit syncdial
+EOF
+bash /bin/genwancfg
+
+/etc/init.d/dropbear stop
+/etc/init.d/passwall2 stop
+/etc/init.d/tailscale stop
+/etc/init.d/ddns-go stop
+
+#sysupgrade -f /etc/backup/Redmi_AX6000ub_us_wanx3.tar.gz
+#rm -rf /etc/backup
+
+#cat > /etc/opkg/distfeeds.conf <<-"EOF"
+#src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
+#src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/luci
+#src/gz immortalwrt_packages https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/packages
+#src/gz immortalwrt_routing https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/routing
+#src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
+#EOF
+
+uci commit system
+uci commit network
+/etc/init.d/network restart
+uci commit dhcp
+/etc/init.d/dnsmasq restart
+uci commit mosdns
+uci commit argon
+
+/etc/init.d/passwall2 start
+/etc/init.d/udp2raw start
+/etc/init.d/tailscale start
+/etc/init.d/ddns-go start
+sleep 20
+uci commit firewall
+/etc/init.d/firewall restart
+/etc/init.d/dropbear start
+
+exit 0
