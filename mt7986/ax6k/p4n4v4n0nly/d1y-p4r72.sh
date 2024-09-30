@@ -5,7 +5,7 @@
 # Author: 0xACE7
 #=================================================
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.177.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
@@ -13,7 +13,7 @@ sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
 
 # Modify Hostname
-sed -i 's/ImmortalWrt/AX6000-UB/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/Redmi_AX6000/g' package/base-files/files/bin/config_generate
 
 # Change language=auto to zh_cn
 sed -i 's/lang="auto"/lang="zh_cn"/g' package/emortal/default-settings/files/99-default-settings
