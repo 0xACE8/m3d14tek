@@ -29,6 +29,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
+  OPENWRT_NAME: padavanonly
 
 jobs:
   build:
