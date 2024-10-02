@@ -19,23 +19,23 @@ uci -q batch <<-EOF
 EOF
 
 # syncdial
-uci -q batch <<-EOF
-  set syncdial.config=syncdial
-  set syncdial.config.syncon='1'
-  set syncdial.config.dialwait='25'
-  set syncdial.config.dialchk='0'
-  set syncdial.config.nomwan='1'
-  set syncdial.config.wanselect='wan'
-  set syncdial.config.dial_type='1'
-  set syncdial.config.wannum='3'
-  set syncdial.config.dialnum='3'
-  set syncdial.config.old_frame='1'
-  set syncdial.config.devbackup='wan'
-  set syncdial.config.bindwan='0'
-  set syncdial.config.enabled='1'
-  commit syncdial
-EOF
-bash /bin/genwancfg
+#uci -q batch <<-EOF
+#  set syncdial.config=syncdial
+#  set syncdial.config.syncon='1'
+#  set syncdial.config.dialwait='25'
+#  set syncdial.config.dialchk='0'
+#  set syncdial.config.nomwan='1'
+#  set syncdial.config.wanselect='wan'
+#  set syncdial.config.dial_type='1'
+#  set syncdial.config.wannum='3'
+#  set syncdial.config.dialnum='3'
+#  set syncdial.config.old_frame='1'
+#  set syncdial.config.devbackup='wan'
+#  set syncdial.config.bindwan='0'
+#  set syncdial.config.enabled='1'
+#  commit syncdial
+#EOF
+#bash /bin/genwancfg
 
 /etc/init.d/dropbear stop
 /etc/init.d/passwall2 stop
