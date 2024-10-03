@@ -2,19 +2,15 @@
 
 # WAN & MODEM
 uci -q batch <<-EOF
-  set network.globals=globals
-  set network.globals.packet_steering='2'
-  set network.packet_steering=1
   set network.wan.username='pppoe_username'
   set network.wan.password='pppoe_password'
-  set network.MODEM=interface
-  set network.MODEM.proto='static'
-  set network.MODEM.device='wan'
-  set network.MODEM.ipaddr='192.168.2.2'
-  set network.MODEM.netmask='255.255.255.0'
-  set network.MODEM.gateway='192.168.2.1'
-  set network.MODEM.metric='100'
-  set network.MODEM.delegate='0'
+  set network.modem=interface
+  set network.modem.proto='static'
+  set network.modem.device='wan'
+  set network.modem.ipaddr='192.168.2.2'
+  set network.modem.netmask='255.255.255.0'
+  set network.modem.gateway='192.168.2.1'
+  set network.modem.metric='90'
   commit network
 EOF
 
@@ -37,10 +33,16 @@ EOF
 #EOF
 #bash /bin/genwancfg
 
-/etc/init.d/dropbear stop
-/etc/init.d/passwall2 stop
-/etc/init.d/tailscale stop
+
+/etc/init.d/mosdns stop
+/etc/init.d/mosdns stop
+/etc/init.d/dnscrypt-proxy stop
+/etc/init.d/zerotier stop
+#/etc/init.d/tailscale stop
 /etc/init.d/ddns-go stop
+/etc/init.d/passwall2 stop
+/etc/init.d/dropbear stop
+
 
 # fix distfeeds
 sed -i "/ace8/d" /etc/opkg/distfeeds.conf
@@ -48,9 +50,6 @@ sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 
 rm -f /etc/dnscrypt-proxy2/*.toml
 mv /etc/backup/dnscrypt-proxy.toml /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-
-#sysupgrade -f /etc/backup/Redmi_AX6000ub_us_wanx3.tar.gz
-#rm -rf /etc/backup
 
 #cat > /etc/opkg/distfeeds.conf <<-"EOF"
 #src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
@@ -60,21 +59,27 @@ mv /etc/backup/dnscrypt-proxy.toml /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 #src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
 #EOF
 
+sysupgrade -f /etc/backup/Redmi_AX6000ub_us_wanx3.tar.gz
+rm -rf /etc/backup
 
-uci commit system
-uci commit network
-/etc/init.d/network restart
-uci commit dhcp
-/etc/init.d/dnsmasq restart
-uci commit firewall
-/etc/init.d/firewall restart
-/etc/init.d/dropbear start
 uci commit mosdns
 uci commit argon
+uci commit dhcp
+uci commit system
+uci commit network
+uci commit firewall
+/etc/init.d/network restart
+/etc/init.d/dnsmasq restart
+/etc/init.d/firewall restart
+
+/etc/init.d/dropbear start
 /etc/init.d/passwall2 start
-/etc/init.d/udp2raw start
-/etc/init.d/tailscale start
 /etc/init.d/ddns-go start
+/etc/init.d/udp2raw start
+#/etc/init.d/tailscale start
+/etc/init.d/zerotier start
+/etc/init.d/dnscrypt-proxy start
 /etc/init.d/mosdns start
+
 
 exit 0
