@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 ax6k 512m padawanonly Atcions
+name: Build mt7986 ax6k 480m padawanonly Atcions
 
 on:
   repository_dispatch:
@@ -23,13 +23,13 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/ax6k_poi_512m.c0nf
+  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/ax6k_poi_480m.c0nf
   DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r71.sh
   DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
-  OPENWRT_NAME: padavanonly_512m
+  OPENWRT_NAME: padavanonly_480m
 
 jobs:
   build:
@@ -176,14 +176,16 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
+        rm -rf packages
+        rm -rf *.buildinfo
+        rm -rf *kernel.bin
+        rm -rf *.tar.gz        
+        rm -rf *factory.bin
+        rm -rf profiles.json
+        rm -rf *.manifest
+        rm -rf sha256sums
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-#        rm -rf packages
-#        rm -rf *kernel.bin
-#        rm -rf *.buildinfo
-#        rm -rf sha256sums
-#        rm -rf profiles.json
-#        rm -rf *.manifest 
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
