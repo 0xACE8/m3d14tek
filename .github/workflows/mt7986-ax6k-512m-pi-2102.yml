@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 ax6k 480m padawanonly Atcions
+name: Build mt7986 ax6k 512m padawanonly 21.02 Atcions
 
 on:
   repository_dispatch:
@@ -22,14 +22,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/ax6k_poi_480m.c0nf
-  DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r71.sh
-  DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/d1y-p4r72.sh
+  FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/21.02/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/21.02/ax6k_poi_480m.c0nf
+  DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/21.02/d1y-p4r71.sh
+  DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/21.02/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
-  OPENWRT_NAME: padavanonly_480m
+  OPENWRT_NAME: padavanonly_512m_2302
 
 jobs:
   build:
@@ -85,7 +85,7 @@ jobs:
       uses: stupidloud/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'ax6kpoi'
+        mixkey: 'ax6k21p'
         prefix: 'openwrt'
 
     - name: Load custom feeds
@@ -191,7 +191,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: PadavanOnly_512m${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: PadavanOnly_512m_2102${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Telegram notification
@@ -200,6 +200,6 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20PadavanOnly_512m${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20PadavanOnly_512m_2102${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}"
 
         
