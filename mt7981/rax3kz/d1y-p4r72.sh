@@ -7,7 +7,7 @@
 # Modify default IP
 sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
-sed -i "s/globals.ula_prefix='auto'/packet_steering='1'/g" package/base-files/files/bin/config_generate
+sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
 echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
@@ -53,9 +53,10 @@ sed -i 's/msgstr "VPN"/msgstr "NAT"/g' luci/modules/luci-base/po/zh_Hans/base.po
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
 #wget https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/emortal/default-settings/files/openwrt_banner
-sed -i 's\[ -f /etc/banner ] && cat /etc/banner\[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b\g' feeds/package/base-files/files/etc/profile
+sed -i '4d' package/base-files/files/etc/profile
+sed -i '4 i[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b' package/base-files/files/etc/profile
 sudo rm package/base-files/files/etc/banner
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/banner -O package/base-files/files/etc/banner
+wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/banner"
 
 # Argon upgraded to Xiaomi theme
 sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
