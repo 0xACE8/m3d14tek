@@ -53,11 +53,13 @@ sed -i 's/msgstr "VPN"/msgstr "NAT"/g' luci/modules/luci-base/po/zh_Hans/base.po
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
 #wget https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/emortal/default-settings/files/openwrt_banner
-sed -i 's\[ -f /etc/banner ] && cat /etc/banner\[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b\g' feeds/package/base-files/files/etc/profile
+sed -i '4d' package/base-files/files/etc/profile
+sed -i '4 i[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b' package/base-files/files/etc/profile
 sudo rm package/base-files/files/etc/banner
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/base-files/files/etc/banner
+wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/banner"
 
 # Argon upgraded to Xiaomi theme
+sed -i 's/bootstrap/argon/g' feeds/luci/collections/luci/Makefile
 sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/img/bg1.jpg"
@@ -79,7 +81,7 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 #rm -rf package/emortal/default-settings/files/99-default-settings-chinese.sh
 #wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-default-settings-chinese.sh -O package/emortal/default-settings/files/99-default-settings-chinese.sh
 #wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/zzz-updata-settings -O package/base-files/files/etc/uci-defaults/zzz-updata-settings
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/r45pb3rry_p1/main/3_m0d3l_b/30-sysinfo.sh -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh
+wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/zzz-updata-settings"
+wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
 
 echo "diy-part2.sh is done."
