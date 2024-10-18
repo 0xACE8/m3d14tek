@@ -80,7 +80,7 @@ sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-confi
 #rm -rf package/emortal/default-settings/files/99-default-settings-chinese.sh
 #wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-default-settings-chinese.sh -O package/emortal/default-settings/files/99-default-settings-chinese.sh
 #wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
-#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/zzz-updata-settings -O package/base-files/files/etc/uci-defaults/zzz-updata-settings
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/r45pb3rry_p1/main/3_m0d3l_b/30-sysinfo.sh -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh
+wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/zzz-updata-settings"
+wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/30-sysinfo.sh"
 
 echo "diy-part2.sh is done."
