@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 ax6k 512m padawanonly 21.02 Atcions
+name: Build mt7986 ax6k 512m 21.02 padawanonly Atcions
 
 on:
   repository_dispatch:
