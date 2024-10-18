@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 rax3000z pro 21.02 padawanonly Atcions
+name: Build mt7981 rax3000z 21.02 padawanonly Atcions
 
 on:
   repository_dispatch:
