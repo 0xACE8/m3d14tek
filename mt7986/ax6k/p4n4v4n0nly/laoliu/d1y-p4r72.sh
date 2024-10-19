@@ -5,9 +5,6 @@
 # Author: 0xACE7
 #=================================================
 
-sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
-sed -i "s/globals.ula_prefix='auto'/packet_steering='1'/g" package/base-files/files/bin/config_generate
-sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
 echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
 sed -i 's/ImmortalWrt/Redmi_AX6000/g' package/base-files/files/bin/config_generate
@@ -28,7 +25,6 @@ sed -i '4 i[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b' package
 rm -rf package/base-files/files/etc/banner
 wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/m3d14tek/refs/heads/main/mt7986/ax6k/p4n4v4n0nly/laoliu/banner"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
-#rm -rf feeds/ace8/luci-theme-kucat/htdocs/luci-static/kucat/img/bg1.jpg
-#wget --no-check-certificate -O feeds/ace8/luci-theme-kucat/htdocs/luci-static/kucat/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/m3d14tek/refs/heads/main/mt7986/ax6k/p4n4v4n0nly/laoliu/bg1.jpg"
+wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/laoliu/zzz-updata-settings"
 
 
