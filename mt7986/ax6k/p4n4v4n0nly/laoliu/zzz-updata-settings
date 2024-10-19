@@ -22,7 +22,7 @@ sed -i '4d' /etc/rc.local
 cat >> /etc/rc.local <<-"EOF"
 #/bin/ash
 
-echo "245 0 0" > /sys/class/leds/rgb:network/multi_intensity
+echo "255 255 255" > /sys/class/leds/rgb:network/multi_intensity
 echo "255 255 255" > /sys/class/leds/rgb:status/multi_intensity
 
 exit 0
