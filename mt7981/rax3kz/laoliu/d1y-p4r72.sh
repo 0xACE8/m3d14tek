@@ -20,6 +20,7 @@ sed -i '/interface}/d' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
+sed -i '/+kmod-nft-nat6/d' feeds/passwall_packages/sing-box/Makefile
 sed -i '4d' package/base-files/files/etc/profile
 sed -i '4 i[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b' package/base-files/files/etc/profile
 rm -rf package/base-files/files/etc/banner
