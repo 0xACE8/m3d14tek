@@ -3,7 +3,7 @@
 # fix distfeeds
 sed -i "/ace8/d" /etc/opkg/distfeeds.conf
 sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
-sed -i "/openwrt_helloworld/d" /etc/opkg/distfeeds.conf
+sed -i "/helloworld/d" /etc/opkg/distfeeds.conf
 
 uci -q batch <<-EOF
   set argon.@global[0]=global
