@@ -4,10 +4,10 @@ sed -i '2 i\src-git passwall_packages https://github.com/xiaorouji/openwrt-passw
 sed -i '$a src-git hello https://github.com/fw876/helloworld' feeds.conf.default
 
 # patch
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/Cmcc-XR30-Core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts "https://raw.githubusercontent.com/0xACE8/Cmcc-XR30-Core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts "https://raw.githubusercontent.com/0xACE8/Cmcc-XR30-Core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/Cmcc-XR30-Core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi"
+wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi"
+wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts"
+wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts"
+wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi"
 
 # XR30
 sed -i '18 icmcc,xr30-emmc \|\\' package/boot/uboot-envtools/files/mediatek_filogic
