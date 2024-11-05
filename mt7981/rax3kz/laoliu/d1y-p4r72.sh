@@ -28,7 +28,7 @@ wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-
 wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7981/rax3kz/laoliu/zzz-updata-settings"
 sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/img/bg1.jpg"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/laoliu/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/favicon.ico"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
