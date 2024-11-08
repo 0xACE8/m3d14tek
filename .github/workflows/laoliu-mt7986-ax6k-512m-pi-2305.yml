@@ -166,7 +166,15 @@ jobs:
         cd openwrt/bin/targets/*/*
         rm -rf packages
         sudo -E apt-get -qq install rename
-        rename 's/.*${{ env.DEVICE_NAME }}/${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.SET_GSW }}${{ env.WIFI_INTERFACE }}${{ env.BUILD_DOCKERMAN }}/' *
+        rm -rf packages
+        rm -rf *.buildinfo
+        rm -rf *kernel.bin
+        rm -rf *.tar.gz        
+        rm -rf *factory.bin
+        rm -rf profiles.json
+        rm -rf *.manifest
+        rm -rf sha256sums
+        rename immortalwrt-mediatek padavanonly_2305_laoliu *        
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
         
@@ -174,7 +182,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.SET_GSW }}${{ env.WIFI_INTERFACE }}${{ env.BUILD_DOCKERMAN }}
+        name: PadavanOnly_2305_laoliu${{ env.DEVICE_NAME }}_512mb${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
         
     - name: 生成固件Release标签
@@ -206,7 +214,6 @@ jobs:
         fi
         echo "release_tag=${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.SET_GSW }}${{ env.WIFI_INTERFACE }}${{ env.BUILD_DOCKERMAN }}" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
-        
 
     - name: Upload firmware to cowtransfer
       id: cowtransfer
@@ -215,7 +222,7 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
+        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to WeTransfer
       id: wetransfer
@@ -224,7 +231,7 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
+        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
   
     - name: 发布固件至Release
       uses: softprops/action-gh-release@v1
@@ -233,6 +240,16 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: ${{ env.FIRMWARE }}/*
-        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.SET_GSW }}${{ env.WIFI_INTERFACE }}${{ env.BUILD_DOCKERMAN }}
+        name: PadavanOnly_2305_laoliu${{ env.DEVICE_NAME }}_512mb${{ env.FILE_DATE }}
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
+
+    - name: Telegram notification
+      if: steps.compile.outputs.status == 'success' && !cancelled()
+      env:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      run: |
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20PadavanOnly_2305_laoliu${{ env.DEVICE_NAME }}_512mb${{ env.FILE_DATE }}"
+
+        
