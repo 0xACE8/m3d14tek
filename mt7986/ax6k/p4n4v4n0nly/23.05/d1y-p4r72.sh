@@ -11,6 +11,9 @@ sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
 echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
+#　编译的固件文件名
+# sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=padavan_2305-$(VERSION_DIST_SANITIZED)/g' include/image.mk
+
 
 # Modify Hostname
 sed -i 's/ImmortalWrt/Redmi_AX6000/g' package/base-files/files/bin/config_generate
