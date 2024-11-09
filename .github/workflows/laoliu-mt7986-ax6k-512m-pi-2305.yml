@@ -182,7 +182,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: PadavanOnly_2305_laoliu${{ env.DEVICE_NAME }}_512mb${{ env.FILE_DATE }}
+        name: padavanonly_2305_laoliu${{ env.DEVICE_NAME }}_512mb${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
         
     - name: 生成固件Release标签
