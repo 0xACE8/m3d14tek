@@ -197,6 +197,8 @@ jobs:
         rm -rf profiles.json
         rm -rf *.manifest
         rm -rf sha256sums
+        sudo -E apt-get install -y rename
+        rename 's/immortalwrt-mediatek-mt7986-xiaomi_redmi-router-ax6000-squashfs-sysupgrade/padavanonly-2305-512m-mt7986-redmi-ax6000-sysupgrade/' *
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
