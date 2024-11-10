@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7981 xr30 23.05 padawanonly Atcions
+name: Build mt7981 xr30 emmc 23.05 padawanonly Atcions
 
 on:
   repository_dispatch:
@@ -24,10 +24,10 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
   REPO_BRANCH: openwrt-23.05
-  FEEDS_CONF: mt7981/rax3kz/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7981/rax3kz/xr30p23.c0nf
-  DIY_P1_SH: mt7981/rax3kz/d1y-p4r71.sh
-  DIY_P2_SH: mt7981/rax3kz/d1y-p4r72.sh
+  FEEDS_CONF: mt7981/cmcc-xr30/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7981/cmcc-xr30/xr30p23.c0nf
+  DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71-emmc.sh
+  DIY_P2_SH: mt7981/cmcc-xr30/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
