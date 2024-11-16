@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7981 xr30 emmc 23.05 immortalwrt Atcions
+name: Build mt7981 xr30 emmc 24.10 immortalwrt Atcions
 
 on:
   repository_dispatch:
@@ -24,7 +24,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-24.10
-  FEEDS_CONF: mt7981/cmcc-xr30/f33d5.c0nf.d3f4ult
+  FEEDS_CONF: mt7981/cmcc-xr30/f33d5.c0nf.d3f4ult.2410
   CONFIG_FILE: mt7981/cmcc-xr30/xr30im.c0nf
   DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71.sh
   DIY_P2_SH: mt7981/cmcc-xr30/d1y-p4r72.sh
