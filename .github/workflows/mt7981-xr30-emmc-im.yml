@@ -23,7 +23,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: master
+  REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: mt7981/cmcc-xr30/f33d5.c0nf.d3f4ult
   CONFIG_FILE: mt7981/cmcc-xr30/xr30im.c0nf
   DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71.sh
@@ -31,7 +31,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
-  OPENWRT_NAME: immortalwrt_2305
+  OPENWRT_NAME: immortalwrt_2410
 
 jobs:
   build:
@@ -96,7 +96,7 @@ jobs:
       uses: stupidloud/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'ax6k23im'
+        mixkey: 'ax6k24im'
         prefix: 'openwrt'
 
     - name: Load custom feeds
@@ -197,7 +197,7 @@ jobs:
         rm -rf *.manifest
         rm -rf sha256sums
         sudo -E apt-get install -y rename
-        rename 's/immortalwrt-mediatek-mt7981-cmcc_xr30-emmc-squashfs-sysupgrade/immortalwrt-2305-mt7981-cmcc_xr30-emmc-sysupgrade/' *
+        rename 's/immortalwrt-mediatek-mt7981-cmcc_xr30-emmc-squashfs-sysupgrade/immortalwrt-2410-mt7981-cmcc_xr30-emmc-sysupgrade/' *
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -205,7 +205,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: immortalwrt-2305-mt7981-cmcc_xr30-emmc-sysupgrade${{ env.FILE_DATE }}
+        name: immortalwrt-2410-mt7981-cmcc_xr30-emmc-sysupgrade${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Telegram notification
@@ -214,6 +214,6 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20immortalwrt-2305-mt7981-cmcc_xr30-emmc-sysupgrade${{ env.FILE_DATE }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20immortalwrt-2410-mt7981-cmcc_xr30-emmc-sysupgrade${{ env.FILE_DATE }}"
 
         
