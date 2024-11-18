@@ -2,12 +2,6 @@
 sed -i '1 i\src-git ace8 https://github.com/0xACE8/4c38-p4ck463;main' feeds.conf.default
 sed -i '2 i\src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main' feeds.conf.default
 
-# patch
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-xr30.dtsi"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30-emmc.dts"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dts"
-wget --no-check-certificate -O target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi "https://raw.githubusercontent.com/0xACE8/cmcc-xr30-core/main/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-xr30.dtsi"
-
 # package/boot/uboot-envtools/files/mediatek_filogic
 sed -i '/cmcc,rax3000m)/i\cmcc,xr30 \|\\' package/boot/uboot-envtools/files/mediatek_filogic
 sed -i '/cmcc,rax3000m-emmc-ubootmod)/i\cmcc,xr30-emmc \|\\' package/boot/uboot-envtools/files/mediatek_filogic
@@ -15,7 +9,6 @@ sed -i '/cmcc,rax3000m-emmc-ubootmod)/i\cmcc,xr30-emmc \|\\' package/boot/uboot-
 # defconfig/mt7981-ax3000.config
 sed -i '/rax3000m-emmc=y/i\CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_cmcc_xr30-emmc=y\nCONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_cmcc_xr30-emmc=""'  defconfig/mt7981-ax3000.config
 sed -i '/rax3000m=y/i\CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_cmcc_xr30=y\nCONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_cmcc_xr30=""'  defconfig/mt7981-ax3000.config
-
 
 # target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
 sed -i '/cmcc,rax3000m\*/a\\tcmcc,xr30* \|\\' target/linux/mediatek/mt7981/base-files/lib/upgrade/platform.sh
