@@ -96,7 +96,7 @@ jobs:
       uses: stupidloud/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'ax6k24im'
+        mixkey: 'ax6k23im'
         prefix: 'openwrt'
 
     - name: Load custom feeds
