@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: mt7981/cmcc-xr30/2102/f33d5.c0nf.d3f4ult
   CONFIG_FILE: mt7981/cmcc-xr30/2102/xr30hf2102.conf
-  DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71-emmc.sh
+  DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71.sh
   DIY_P2_SH: mt7981/cmcc-xr30/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
