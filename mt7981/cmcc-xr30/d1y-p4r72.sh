@@ -5,7 +5,7 @@
 # Author: 0xACE7
 #=================================================
 # Modify default IP
-sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.177.1/g' package/base-files/files/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
@@ -48,7 +48,7 @@ sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app
 #sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 
 # change navbar 'VPN' to 'NAT'
-sed -i 's/msgstr "VPN"/msgstr "NAT"/g' luci/modules/luci-base/po/zh_Hans/base.po
+sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
 
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
@@ -64,7 +64,7 @@ rm -rf feeds/luci/applications/luci-app-kcptun
 # Argon upgraded to Xiaomi theme
 sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/laoliu/bg1.jpg"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/favicon.ico"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
