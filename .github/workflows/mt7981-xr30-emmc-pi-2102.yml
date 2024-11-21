@@ -25,7 +25,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: mt7981/cmcc-xr30/2102/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7981/cmcc-xr30/2102/xr30po2102.conf
+  CONFIG_FILE: mt7981/cmcc-xr30/2102/xr30pi2102.conf
   DIY_P1_SH: mt7981/cmcc-xr30/2102/d1y-p4r71pi.sh
   DIY_P2_SH: mt7981/cmcc-xr30/2102/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
