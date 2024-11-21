@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7981 xr30 emmc 21.02 hanwckf Atcions
+name: Build mt7981 xr30 emmc 21.02 padavanonly Atcions
 
 on:
   repository_dispatch:
