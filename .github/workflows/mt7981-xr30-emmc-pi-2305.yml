@@ -24,10 +24,10 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
   REPO_BRANCH: openwrt-23.05
-  FEEDS_CONF: mt7981/cmcc-xr30/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7981/cmcc-xr30/xr30p23.c0nf
-  DIY_P1_SH: mt7981/cmcc-xr30/d1y-p4r71-emmc.sh
-  DIY_P2_SH: mt7981/cmcc-xr30/d1y-p4r72.sh
+  FEEDS_CONF: mt7981/cmcc-xr30/2305/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7981/cmcc-xr30/2305/xr30pi2305.conf
+  DIY_P1_SH: mt7981/cmcc-xr30/2305/d1y-p4r71.sh
+  DIY_P2_SH: mt7981/cmcc-xr30/2305/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
@@ -170,7 +170,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20padavanonly-2305-mt7981-cmcc_xr30-emmc-sysupgrade${{ env.FILE_DATE }}"
 
     - name: Check space usage
       if: (!cancelled())
