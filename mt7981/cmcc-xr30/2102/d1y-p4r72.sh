@@ -52,7 +52,7 @@ sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/sha
 
 # change navbar 'VPN' to 'NAT'
 #sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
-sed -i 's/"VPN"/"NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
+sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
