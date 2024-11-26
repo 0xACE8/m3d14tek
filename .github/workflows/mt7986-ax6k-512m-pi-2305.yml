@@ -25,7 +25,7 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/23.05/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/23.05/23.05.config
+  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/23.05/ax6k_poi_512m.c0nf
   DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/23.05/d1y-p4r71.sh
   DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/23.05/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
@@ -110,12 +110,10 @@ jobs:
       working-directory: ./openwrt
       run: |
         ./scripts/feeds update -a
+        rm -rf feeds/packages/lang/golang
+        git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
         ./scripts/feeds install -a
-        ./scripts/feeds install -a        
-#        rm -rf feeds/packages/lang/golang
-#        git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-#        ./scripts/feeds install -a
-#        ./scripts/feeds install -a
+        ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
@@ -171,7 +169,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20padavanonly-2305-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}"
 
     - name: Check space usage
       if: (!cancelled())
