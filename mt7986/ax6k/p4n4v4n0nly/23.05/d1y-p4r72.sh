@@ -48,9 +48,6 @@ sed -i '415G' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
 sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
 sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
 
-# samba4
-#sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
-
 # change navbar 'VPN' to 'NAT'
 #sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/"VPN"/"NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
