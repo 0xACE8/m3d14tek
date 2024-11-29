@@ -51,7 +51,8 @@ sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app
 #sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 
 # change navbar 'VPN' to 'NAT'
-sed -i 's/msgstr "VPN"/msgstr "NAT"/g' luci/modules/luci-base/po/zh_Hans/base.po
+#sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
+sed -i 's/"VPN"/"NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
@@ -62,7 +63,6 @@ wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.
 
 # Argon upgraded to Xiaomi theme
 sed -i 's/bootstrap/argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
