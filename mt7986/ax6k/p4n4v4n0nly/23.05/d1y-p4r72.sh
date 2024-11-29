@@ -40,9 +40,10 @@ sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # MulteWAN
+#sed -i 's/MultiWAN 管理器"/分流状态"/g' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
 sed -i '412d' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '412 i\msgstr "MWAN 状态"' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '414 i\msgid "MultiWAN Manager2"\nmsgstr "MWAN 管理"\n' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '412 i\msgstr "分流状态"' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '414 i\msgid "MultiWAN Manager2"\nmsgstr "分流管理"\n' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
 sed -i '415G' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
 sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
 sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
@@ -53,6 +54,8 @@ sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app
 # change navbar 'VPN' to 'NAT'
 #sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/"VPN"/"NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
+sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
+sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
