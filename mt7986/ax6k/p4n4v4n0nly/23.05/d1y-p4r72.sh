@@ -56,8 +56,7 @@ sed -i 's/msgstr "VPN"/msgstr "NAT"/g' luci/modules/luci-base/po/zh_Hans/base.po
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
 #wget https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/emortal/default-settings/files/openwrt_banner
-sed -i '4d' package/base-files/files/etc/profile
-sed -i '4 i[ -f /etc/banner ] && cat /etc/banner | lolcat -h 0.30 -r -b' package/base-files/files/etc/profile
+sed -i 's/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner \| lolcat \-h 0.30 \-r \-b/g' package/base-files/files/etc/profile
 sudo rm package/base-files/files/etc/banner
 wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/banner"
 
