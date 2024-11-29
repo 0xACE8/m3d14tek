@@ -2,8 +2,8 @@
 
 # WAN & MODEM
 uci -q batch <<-EOF
-  set network.wan.username='PPPOE_CU_USERNAME'
-  set network.wan.password='PPPOE_CU_PASSWORD'
+  set network.wan.username='pppoe_username'
+  set network.wan.password='pppoe_password'
   set network.modem=interface
   set network.modem.proto='dhcp'
   set network.modem.device='wan'
