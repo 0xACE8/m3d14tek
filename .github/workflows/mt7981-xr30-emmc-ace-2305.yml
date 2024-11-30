@@ -189,17 +189,18 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        rm -rf *.buildinfo
-        rm -rf *kernel.bin
-        rm -rf *.tar.gz        
-        rm -rf *factory.bin
-        rm -rf profiles.json
-        rm -rf *.manifest
-        rm -rf sha256sums
-        sudo -E apt-get install -y rename
-        rename 's/immortalwrt-mediatek-mt7981-cmcc_xr30-emmc-squashfs-sysupgrade/aceywrt-2305-mt7981-cmcc_xr30-emmc-sysupgrade/' *
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
+#        rm -rf *.buildinfo
+#        rm -rf *kernel.bin
+#        rm -rf *.tar.gz        
+#        rm -rf *factory.bin
+#        rm -rf profiles.json
+#        rm -rf *.manifest
+#        rm -rf sha256sums
+#        sudo -E apt-get install -y rename
+#        rename 's/immortalwrt-mediatek-mt7981-cmcc_xr30-emmc-squashfs-sysupgrade/aceywrt-2305-mt7981-cmcc_xr30-emmc-sysupgrade/' *
+
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
