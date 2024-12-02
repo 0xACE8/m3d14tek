@@ -127,11 +127,11 @@ jobs:
       working-directory: ./openwrt
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        OP_SSH_PW: ${{ secrets.SSH_AUTHORIZED_PASSWORD }}
-        PPPOE_USERNAME1: ${{ secrets.PPPOE_CU_USERNAME }}
-        PPPOE_PASSWORD1: ${{ secrets.PPPOE_CU_PASSWORD }}
+        SSH_PASSWORD: ${{ secrets.SSH_AUTHORIZED_PASSWORD }}
+        PPPOE_CU_USERNAME: ${{ secrets.PPPOE_CU_USERNAME }}
+        PPPOE_CU_PASSWORD: ${{ secrets.PPPOE_CU_PASSWORD }}
       run: |
-        sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_AUTHORIZED_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
+        sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
         sed -i 's/pppoe_username/${{ secrets.PPPOE_CU_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         sed -i 's/pppoe_password/${{ secrets.PPPOE_CU_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings        
 #        git clone --branch main https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
