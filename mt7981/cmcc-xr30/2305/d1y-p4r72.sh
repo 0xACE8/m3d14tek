@@ -38,23 +38,25 @@ sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # MulteWAN
-#sed -i '412d' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-#sed -i '412 i\msgstr "MWAN 状态"' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-#sed -i '414 i\msgid "MultiWAN Manager2"\nmsgstr "MWAN 管理"\n' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-#sed -i '415G' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-#sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
-#sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
-
-# samba4
-#sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
-#sed -i 's/services/network/g' feeds/luci/applications/luci-app-eqos/root/usr/share/luci/menu.d/luci-app-eqos.json
-sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
-
+#sed -i 's/MultiWAN 管理器"/分流状态"/g' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '412d' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '412 i\msgstr "分流状态"' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '414 i\msgid "MultiWAN Manager2"\nmsgstr "分流管理"\n' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '415G' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
+sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
+sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
 
 # change navbar 'VPN' to 'NAT'
-#sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
+sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
+sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
+# change upnp
+sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i '4 i\\t\t"order": 40,' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
+
+# remove printer support
 sed -i '/luci-app-usb-printer/d' target/linux/mediatek/image/mt7981.mk
 sed -i 's/luci-app-usbmodem/ /g' target/linux/mediatek/image/mt7981.mk
 
@@ -71,7 +73,6 @@ rm -rf feeds/luci/applications/luci-app-kcptun
 rm -rf feeds/ace8/luci-app-turboacc
 
 # Argon upgraded to Xiaomi theme
-sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
