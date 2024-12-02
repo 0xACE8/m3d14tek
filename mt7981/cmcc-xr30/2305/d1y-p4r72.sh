@@ -55,6 +55,9 @@ sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/sha
 #sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
+sed -i '/luci-app-usb-printer/d' target/linux/mediatek/image/mt7981.mk
+sed -i 's/luci-app-usbmodem/ /g' target/linux/mediatek/image/mt7981.mk
+
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
 #wget https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/emortal/default-settings/files/openwrt_banner
