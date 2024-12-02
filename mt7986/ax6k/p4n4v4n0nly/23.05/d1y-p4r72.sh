@@ -49,13 +49,12 @@ sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/l
 sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
 
 # change navbar 'VPN' to 'NAT'
-#sed -i '6 imsgid "VPN"\nmsgstr "NAT"\n' feeds/luci/modules/luci-base/po/zh-cn/base.po
-sed -i 's/"VPN"/"NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
+sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
 sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # change upnp
-sed -i 's/"UPnP"/"UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 sed -i '4 i\\t\t"order": 40,' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 
@@ -76,6 +75,7 @@ rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/img/argone.svg"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/*.png
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-192x192.png "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/icon/android-icon-192x192.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/icon/android-icon-144x144.png"
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-60x60.png "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/icon/apple-icon-60x60.png"
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-72x72.png "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/icon/apple-icon-72x72.png"
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/argone/icon/apple-icon-144x144.png"
