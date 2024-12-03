@@ -53,8 +53,8 @@ sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # change upnp
 sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
-sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
-sed -i '4 i\\t\t"order": 40,' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i 's/services/network/g' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i '4 i\\t\t"order": 40,' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
 
 # remove printer support
 sed -i '/luci-app-usb-printer/d' target/linux/mediatek/image/mt7981.mk
@@ -91,9 +91,6 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_rax3000z_pro/argon/icon/ms-icon-144x144.png"
 
 # upgrade config
-#rm -rf package/emortal/default-settings/files/99-default-settings-chinese.sh
-#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-default-settings-chinese.sh -O package/emortal/default-settings/files/99-default-settings-chinese.sh
-#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
 wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7981/cmcc-xr30/zzz-updata-settings"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/30-sysinfo.sh"
 
