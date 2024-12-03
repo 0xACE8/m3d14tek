@@ -135,7 +135,8 @@ jobs:
         sed -i 's/pppoe_username/${{ secrets.PPPOE_CU_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         sed -i 's/pppoe_password/${{ secrets.PPPOE_CU_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         git clone --branch main https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
-        cd package/base-files/files/etc/backup | ls | grep -v Redmi_AX6000-512mb-mwan3.tar.gz | xargs rm
+        cd package/base-files/files/etc/backup 
+        ls | grep -v Redmi_AX6000-512mb-mwan3.tar.gz | xargs rm
         ls
         
     - name: SSH connection to Actions
