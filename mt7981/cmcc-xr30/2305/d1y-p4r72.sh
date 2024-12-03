@@ -59,6 +59,7 @@ sed -i '4 i\\t\t"order": 40,' package/mtk/applications/luci-app-upnp-mtk-adjust/
 # remove printer support
 sed -i '/luci-app-usb-printer/d' target/linux/mediatek/image/mt7981.mk
 sed -i 's/luci-app-usbmodem/ /g' target/linux/mediatek/image/mt7981.mk
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
 
 # Change to my banner
 #sudo rm package/emortal/default-settings/files/openwrt_banner
