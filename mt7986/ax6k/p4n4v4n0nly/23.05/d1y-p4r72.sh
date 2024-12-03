@@ -9,8 +9,10 @@ sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_gener
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
-sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
-echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
+sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='%R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
+sed -i 's/%D/PadavanOnly/g' package/base-files/files/etc/openwrt_release
+#echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
+
 #　编译的固件文件名
 # sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=padavan_2305-$(VERSION_DIST_SANITIZED)/g' include/image.mk
 
@@ -59,8 +61,6 @@ sed -i 's/services/network/g' package/mtk/applications/luci-app-upnp-mtk-adjust/
 sed -i '4 i\\t\t"order": 40,' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
 
 # Change to my banner
-#sudo rm package/emortal/default-settings/files/openwrt_banner
-#wget https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/banner -O package/emortal/default-settings/files/openwrt_banner
 sed -i 's/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner \| lolcat \-h 0.30 \-r \-b/g' package/base-files/files/etc/profile
 sudo rm package/base-files/files/etc/banner
 wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/banner"
@@ -85,9 +85,6 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/ms-icon-144x144.png"
 
 # upgrade config
-#rm -rf package/emortal/default-settings/files/99-default-settings-chinese.sh
-#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-default-settings-chinese.sh -O package/emortal/default-settings/files/99-default-settings-chinese.sh
-#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/hyp3r-v_x64/main/1mm0rt4lwrt/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
 wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/23.05/zzz-updata-settings"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
 
