@@ -58,6 +58,16 @@ sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 sysupgrade -f /etc/backup/Redmi_AX6000ub_us_wanx3.tar.gz
 rm -rf /etc/backup
 
+sed -i '/exit 0/d' /etc/rc.local
+cat >> /etc/rc.local <<-"EOF"
+#/bin/ash
+
+echo "255 255 255" > /sys/class/leds/rgb:network/multi_intensity
+echo "255 255 255" > /sys/class/leds/rgb:status/multi_intensity
+
+exit 0
+EOF
+
 uci commit mosdns
 uci commit argon
 uci commit dhcp
