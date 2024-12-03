@@ -55,7 +55,7 @@ sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 #src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
 #EOF
 
-sysupgrade -f /etc/backup/Redmi_AX6000ub_us_wanx3.tar.gz
+sysupgrade -f /etc/backup/Redmi_AX6000-512mb-mwan3.tar.gz
 rm -rf /etc/backup
 
 sed -i '/exit 0/d' /etc/rc.local
