@@ -10,8 +10,8 @@ sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_gener
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
-sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
-echo "DISTRIB_SOURCECODE='aceywrt'" >>package/base-files/files/etc/openwrt_release
+sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='%R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
+sed -i 's/%D/AceyWrt/g' package/base-files/files/etc/openwrt_release
 
 # Modify Hostname
 sed -i 's/ImmortalWrt/CMCC_XR30/g' package/base-files/files/bin/config_generate
