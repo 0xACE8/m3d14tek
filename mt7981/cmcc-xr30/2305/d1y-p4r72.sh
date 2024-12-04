@@ -74,6 +74,9 @@ rm -rf feeds/luci/applications/luci-app-kcptun
 rm -rf feeds/ace8/luci-app-turboacc
 
 # Argon upgraded to Xiaomi theme
+sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_xr30/argon/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
