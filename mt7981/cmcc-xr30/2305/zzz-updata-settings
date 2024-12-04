@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# WAN & MODEM
+uci -q batch <<-EOF
+  set network.wan.username='pppoe_username'
+  set network.wan.password='pppoe_password'
+  set network.modem=interface
+  set network.modem.proto='dhcp'
+  set network.modem.device='wan'
+  set network.modem.metric='90'
+  commit network
+EOF
+
+# argon theme
+  set uci -q batch <<-EOF
+  set argon.@global[0]=global
+  set argon.@global[0].primary='#ff4c48'
+  set argon.@global[0].dark_primary='#ff4c48'
+  set argon.@global[0].blur='10'
+  set argon.@global[0].blur_dark='10'
+  set argon.@global[0].transparency='0.5'
+  set argon.@global[0].transparency_dark='0.5'
+  set argon.@global[0].mode='light'
+  set argon.@global[0].online_wallpaper='none'
+  commit argon
+EOF
+
+# syncdial
+#uci -q batch <<-EOF
+#  set syncdial.config=syncdial
+#  set syncdial.config.syncon='1'
+#  set syncdial.config.dialwait='5'
+#  set syncdial.config.dialchk='0'
+#  set syncdial.config.nomwan='0'
+#  set syncdial.config.wanselect='wan'
+#  set syncdial.config.dial_type='1'
+#  set syncdial.config.wannum='3'
+#  set syncdial.config.dialnum='3'
+#  set syncdial.config.old_frame='1'
+#  set syncdial.config.devbackup='wan'
+#  set syncdial.config.bindwan='0'
+#  set syncdial.config.enabled='1'
+#  commit syncdial
+#EOF
+#bash /bin/genwancfg
+
+
+/etc/init.d/mosdns stop
+/etc/init.d/dnscrypt-proxy stop
+/etc/init.d/zerotier stop
+/etc/init.d/ddns-go stop
+/etc/init.d/passwall2 stop
+/etc/init.d/dropbear stop
+
+
+# fix distfeeds
+sed -i "/ace8/d" /etc/opkg/distfeeds.conf
+sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
+
+#rm -f /etc/dnscrypt-proxy2/*.toml
+#mv /etc/backup/dnscrypt-proxy.toml /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+
+#cat > /etc/opkg/distfeeds.conf <<-"EOF"
+#src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
+#src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/luci
+#src/gz immortalwrt_packages https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/packages
+#src/gz immortalwrt_routing https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/routing
+#src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
+#EOF
+
+sysupgrade -f /etc/backup/CMCC-XR30-mwan3.tar.gz
+rm -rf /etc/backup
+
+uci commit mosdns
+uci commit argon
+uci commit dhcp
+uci commit system
+uci commit network
+uci commit firewall
+/etc/init.d/network restart
+/etc/init.d/dnsmasq restart
+/etc/init.d/firewall restart
+
+/etc/init.d/dropbear start
+/etc/init.d/passwall2 start
+/etc/init.d/ddns-go start
+/etc/init.d/udp2raw start
+#/etc/init.d/tailscale start
+/etc/init.d/zerotier start
+/etc/init.d/dnscrypt-proxy start
+/etc/init.d/mosdns start
+
+
+exit 0
