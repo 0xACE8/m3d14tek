@@ -52,7 +52,7 @@ sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
 sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # change upnp
-sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
 sed -i 's/services/network/g' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
 sed -i '4 i\\t\t"order": 40,' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
 
