@@ -12,10 +12,10 @@ uci -q batch <<-EOF
 EOF
 
 # argon theme
-  set uci -q batch <<-EOF
+uci -q batch <<-EOF
   set argon.@global[0]=global
-  set argon.@global[0].primary='#ff4c48'
-  set argon.@global[0].dark_primary='#ff4c48'
+  set argon.@global[0].primary='#ff494b'
+  set argon.@global[0].dark_primary='#ff494b'
   set argon.@global[0].blur='10'
   set argon.@global[0].blur_dark='10'
   set argon.@global[0].transparency='0.5'
@@ -56,9 +56,6 @@ EOF
 # fix distfeeds
 sed -i "/ace8/d" /etc/opkg/distfeeds.conf
 sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
-
-#rm -f /etc/dnscrypt-proxy2/*.toml
-#mv /etc/backup/dnscrypt-proxy.toml /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 
 #cat > /etc/opkg/distfeeds.conf <<-"EOF"
 #src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
