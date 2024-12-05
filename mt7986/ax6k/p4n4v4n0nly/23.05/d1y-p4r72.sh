@@ -68,21 +68,21 @@ wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.
 # Argon upgraded to Xiaomi theme
 sed -i 's/bootstrap/argon/g' feeds/luci/collections/luci/Makefile
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/img/bg1.jpg"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/favicon.ico"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/favicon.ico"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/img/argone.svg"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/img/argon.svg"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/*.png
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-192x192.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/android-icon-192x192.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/android-icon-144x144.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-60x60.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/apple-icon-60x60.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-72x72.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/apple-icon-72x72.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/apple-icon-144x144.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-16x16.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/favicon-16x16.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-32x32.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/favicon-32x32.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-96x96.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/favicon-96x96.png"
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argone/icon/ms-icon-144x144.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-192x192.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/android-icon-192x192.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/android-icon-144x144.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-60x60.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/apple-icon-60x60.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-72x72.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/apple-icon-72x72.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/apple-icon-144x144.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-16x16.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/favicon-16x16.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-32x32.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/favicon-32x32.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-96x96.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/favicon-96x96.png"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/ms-icon-144x144.png"
 
 # upgrade config
 wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/23.05/zzz-updata-settings"
