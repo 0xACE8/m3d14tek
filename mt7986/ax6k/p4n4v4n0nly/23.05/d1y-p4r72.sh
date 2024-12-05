@@ -87,5 +87,6 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 # upgrade config
 wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/23.05/zzz-updata-settings"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
+wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/50-cloud.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/50-cloud.sh"
 
 echo "diy-part2.sh is done."
