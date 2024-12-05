@@ -6,7 +6,6 @@
 #=================================================
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.177.1/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
@@ -74,8 +73,8 @@ rm -rf feeds/luci/applications/luci-app-kcptun
 rm -rf feeds/ace8/luci-app-turboacc
 
 # Argon upgraded to Xiaomi theme
-sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
-sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+sed -i 's/#5e72e4/#ff494b/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/#5e72e4/#ff494b/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
 
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc-xr30/argon/img/bg1.jpg"
