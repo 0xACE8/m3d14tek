@@ -65,6 +65,10 @@ sed -i 's/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner/\[ \-f \/etc\/banner \]
 sudo rm package/base-files/files/etc/banner
 wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/banner"
 
+# argon
+sed -i 's/#5e72e4/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/#5e72e4/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+
 # Argon upgraded to Xiaomi theme
 sed -i 's/bootstrap/argon/g' feeds/luci/collections/luci/Makefile
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
