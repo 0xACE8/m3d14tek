@@ -11,6 +11,20 @@ uci -q batch <<-EOF
   commit network
 EOF
 
+# argon theme
+uci -q batch <<-EOF
+  set argon.@global[0]=global
+  set argon.@global[0].primary='#ff6900'
+  set argon.@global[0].dark_primary='#ff6900'
+  set argon.@global[0].blur='10'
+  set argon.@global[0].blur_dark='10'
+  set argon.@global[0].transparency='0.5'
+  set argon.@global[0].transparency_dark='0.5'
+  set argon.@global[0].mode='light'
+  set argon.@global[0].online_wallpaper='none'
+  commit argon
+EOF
+
 # syncdial
 #uci -q batch <<-EOF
 #  set syncdial.config=syncdial
