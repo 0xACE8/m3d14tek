@@ -78,7 +78,7 @@ sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argo
 sed -i 's/#5e72e4/#ff4c48/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
 
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc_xr30/argon/img/bg1.jpg"
+wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc-xr30/argon/img/bg1.jpg"
 rm -rf feeds/ace8/luci-app-argon/htdocs/luci-static/argon/favicon.ico
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/cmcc-xr30/argon/favicon.ico"
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
