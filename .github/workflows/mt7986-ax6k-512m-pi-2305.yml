@@ -132,9 +132,11 @@ jobs:
         PPPOE_CU_PASSWORD: ${{ secrets.PPPOE_CU_PASSWORD }}
       run: |
         sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_AUTHORIZED_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
+        cat package/base-files/files/etc/shadow
         sed -i 's/pppoe_username/${{ secrets.PPPOE_CU_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         sed -i 's/pppoe_password/${{ secrets.PPPOE_CU_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         git clone --branch redmi_ax6000 https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
+        ls package/base-files/files/etc/backup
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
