@@ -58,9 +58,6 @@ EOF
 sed -i "/ace8/d" /etc/opkg/distfeeds.conf
 sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 
-#rm -f /etc/dnscrypt-proxy2/*.toml
-#mv /etc/backup/dnscrypt-proxy.toml /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-
 #cat > /etc/opkg/distfeeds.conf <<-"EOF"
 #src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
 #src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/luci
