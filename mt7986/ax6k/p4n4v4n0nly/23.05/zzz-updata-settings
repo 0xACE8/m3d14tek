@@ -45,13 +45,13 @@ EOF
 #bash /bin/genwancfg
 
 
-/etc/init.d/mosdns stop
-/etc/init.d/dnscrypt-proxy stop
-/etc/init.d/zerotier stop
+#/etc/init.d/mosdns stop
+#/etc/init.d/dnscrypt-proxy stop
+#/etc/init.d/zerotier stop
 #/etc/init.d/tailscale stop
-/etc/init.d/ddns-go stop
-/etc/init.d/passwall2 stop
-/etc/init.d/dropbear stop
+#/etc/init.d/ddns-go stop
+#/etc/init.d/passwall2 stop
+#/etc/init.d/dropbear stop
 
 
 # fix distfeeds
@@ -66,7 +66,7 @@ sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 #src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
 #EOF
 
-sysupgrade -f /etc/backup/Redmi_AX6000-512mb-mwan3.tar.gz
+sysupgrade -f /etc/backup/redmi_ax6000-512mb-mwan3.tar.gz
 rm -rf /etc/backup
 
 sed -i '/exit 0/d' /etc/rc.local
@@ -79,24 +79,22 @@ echo "255 255 255" > /sys/class/leds/rgb:status/multi_intensity
 exit 0
 EOF
 
-uci commit mosdns
-uci commit argon
-uci commit dhcp
-uci commit system
-uci commit network
-uci commit firewall
+#uci commit mosdns
+#uci commit argon
+#uci commit dhcp
+#uci commit system
+#uci commit network
+#uci commit firewall
+
 /etc/init.d/network restart
 /etc/init.d/dnsmasq restart
 /etc/init.d/firewall restart
-
-/etc/init.d/dropbear start
-/etc/init.d/passwall2 start
-/etc/init.d/ddns-go start
-/etc/init.d/udp2raw start
-#/etc/init.d/tailscale start
-/etc/init.d/zerotier start
-/etc/init.d/dnscrypt-proxy start
-/etc/init.d/mosdns start
+/etc/init.d/dropbear restart
+/etc/init.d/passwall2 restart
+/etc/init.d/ddns-go restart
+/etc/init.d/udp2raw restart
+/etc/init.d/zerotier restart
+/etc/init.d/mosdns restart
 
 
 exit 0
