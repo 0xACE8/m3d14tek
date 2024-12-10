@@ -7,11 +7,10 @@
 # Modify default IP
 sed -i 's/192.168.6.1/192.168.177.1/g' package/base-files/files/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/files/bin/config_generate
-sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/files/bin/config_generate
+sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='2'\n\t\t\t\tset network.globals.steering_flows='128'/g" package/base-files/files/bin/config_generate
 sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 sed -i "s|DISTRIB_REVISION='%R'|DISTRIB_REVISION='%R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
-sed -i 's/%D/PadavanOnly/g' package/base-files/files/etc/openwrt_release
-#echo "DISTRIB_SOURCECODE='padavanonly'" >>package/base-files/files/etc/openwrt_release
+sed -i "s/%V/24.10-%V/g" package/base-files/files/etc/openwrt_release
 
 #　编译的固件文件名
 # sed -i 's/IMG_PREFIX:=$(VERSION_DIST_SANITIZED)/IMG_PREFIX:=padavan_2305-$(VERSION_DIST_SANITIZED)/g' include/image.mk
@@ -41,24 +40,18 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
-# MulteWAN
-#sed -i 's/MultiWAN 管理器"/分流状态"/g' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '412d' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '412 i\msgstr "分流状态"' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '414 i\msgid "MultiWAN Manager2"\nmsgstr "分流管理"\n' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '415G' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
-sed -i '46d' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
-sed -i '46 i\\t\t"title": "MultiWAN Manager2",' feeds/luci/applications/luci-app-mwan3/root/usr/share/luci/menu.d/luci-app-mwan3.json
-
 # change navbar 'VPN' to 'NAT'
 sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
 sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
+# nas
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
+
 # change upnp
-sed -i 's/msgstr "UPnP"/msgstr "UPnP\/NAT"/g' package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
-sed -i 's/services/network/g' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
-sed -i '4 i\\t\t"order": 40,' package/mtk/applications/luci-app-upnp-mtk-adjust/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i '4 i\\t\t"order": 40,' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
+sed -i 's/UPnP IGD 和 PCP"/UPnP\/NAT"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 
 # Change to my banner
 sed -i 's/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner/\[ \-f \/etc\/banner \] \&\& cat \/etc\/banner \| lolcat \-h 0.30 \-r \-b/g' package/base-files/files/etc/profile
@@ -68,6 +61,8 @@ wget --no-check-certificate -O package/base-files/files/etc/banner "https://raw.
 # argon
 sed -i 's/#5e72e4/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 sed -i 's/#5e72e4/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+sed -i 's/#483d8b/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/#483d8b/#ff6900/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
 
 # Argon upgraded to Xiaomi theme
 sed -i 's/bootstrap/argon/g' feeds/luci/collections/luci/Makefile
@@ -89,7 +84,7 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/ms-icon-144x144.png"
 
 # upgrade config
-wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/p4n4v4n0nly/23.05/zzz-updata-settings"
+wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/1mm0rt4lwrt/zzz-updata-settings"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/50-cloud.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/50-cloud.sh"
 
