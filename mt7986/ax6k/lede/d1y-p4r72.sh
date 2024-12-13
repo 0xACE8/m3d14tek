@@ -21,7 +21,7 @@ sed -i 's/LEDE/Redmi_AX6000/g' package/base-files/files/bin/config_generate
 
 # Change ash to bash
 sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./0/g' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./:/g' package/lean/default-settings/files/zzz-default-settings
 
 # Boost UDP
 echo '# optimize udp' >>package/base-files/files/etc/sysctl.d/10-default.conf
