@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# WAN & MODEM
+uci -q batch <<-EOF
+  set network.wan.username='pppoe_username'
+  set network.wan.password='pppoe_password'
+  set network.modem=interface
+  set network.modem.proto='dhcp'
+  set network.modem.device='wan'
+  set network.modem.metric='90'
+  commit network
+EOF
+
+# argon theme
+uci -q batch <<-EOF
+  set argon.@global[0]=global
+  set argon.@global[0].primary='#ff6900'
+  set argon.@global[0].dark_primary='#ff6900'
+  set argon.@global[0].blur='10'
+  set argon.@global[0].blur_dark='10'
+  set argon.@global[0].transparency='0.5'
+  set argon.@global[0].transparency_dark='0.5'
+  set argon.@global[0].mode='light'
+  set argon.@global[0].online_wallpaper='none'
+  commit argon
+EOF
+
+# fix distfeeds
+sed -i "/ace8/d" /etc/opkg/distfeeds.conf
+sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
+
+#sysupgrade -f /etc/backup/redmi_ax6000-512mb-mwan3.tar.gz
+rm -rf /etc/backup
+
+sed -i '/exit 0/d' /etc/rc.local
+cat >> /etc/rc.local <<-"EOF"
+#/bin/ash
+
+echo "255 255 255" > /sys/class/leds/rgb:network/multi_intensity
+echo "255 255 255" > /sys/class/leds/rgb:status/multi_intensity
+
+exit 0
+EOF
+
+/etc/init.d/network restart
+/etc/init.d/dnsmasq restart
+/etc/init.d/firewall restart
+/etc/init.d/dropbear restart
+/etc/init.d/passwall2 restart
+/etc/init.d/ddns-go restart
+/etc/init.d/udp2raw restart
+/etc/init.d/zerotier restart
+/etc/init.d/mosdns restart
+
+exit 0
