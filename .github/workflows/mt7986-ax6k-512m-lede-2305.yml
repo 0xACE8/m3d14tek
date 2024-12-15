@@ -24,10 +24,10 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: mt7986/ax6k/lede/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/lede/ax6klede.c0nf
-  DIY_P1_SH: mt7986/ax6k/lede/d1y-p4r71.sh
-  DIY_P2_SH: mt7986/ax6k/lede/d1y-p4r72.sh
+  FEEDS_CONF: mt7986/ax6k/l3d3/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7986/ax6k/l3d3/ax6klede.c0nf
+  DIY_P1_SH: mt7986/ax6k/l3d3/d1y-p4r71.sh
+  DIY_P2_SH: mt7986/ax6k/l3d3/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
