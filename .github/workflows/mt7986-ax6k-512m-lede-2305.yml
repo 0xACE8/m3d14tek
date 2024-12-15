@@ -131,9 +131,9 @@ jobs:
         PPPOE_CT_USERNAME: ${{ secrets.PPPOE_CT_USERNAME }}
         PPPOE_CT_PASSWORD: ${{ secrets.PPPOE_CT_PASSWORD }}
       run: |
-        sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
-        sed -i 's/pppoe_username/${{ secrets.PPPOE_CT_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
-        sed -i 's/pppoe_password/${{ secrets.PPPOE_CT_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
+#        sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
+#        sed -i 's/pppoe_username/${{ secrets.PPPOE_CT_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
+#        sed -i 's/pppoe_password/${{ secrets.PPPOE_CT_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
 #        git clone --branch redmi_ax6000 https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
         
     - name: SSH connection to Actions
