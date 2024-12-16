@@ -38,14 +38,13 @@ echo 'net.core.wmem_default=26214400' >>package/base-files/files/etc/sysctl.d/10
 echo 'net.core.netdev_max_backlog=2048' >>package/base-files/files/etc/sysctl.d/10-default.conf
 
 # Change luci list name
-
-# Change luci list name
 sed -i '/interface}/d' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # change navbar 'VPN' to 'NAT'
+sed -i 's/msgstr "VPN"/msgstr "NAT"/g' feeds/luci/modules/luci-base/po/zh_Hans/base.po
 sed -i 's/Turbo ACC 网络加速\"/网络加速\"/g' feeds/luci/applications/luci-app-turboacc/po/zh_Hans/turboacc.po
 sed -i 's/20/0/g' package/network/services/uhttpd/files/uhttpd.config
 sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
