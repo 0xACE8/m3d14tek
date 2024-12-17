@@ -17,7 +17,6 @@ sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/w
 
 
 # Change language=auto to zh_cn & Change ash to bash
-sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
 sed -i '/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/uci commit system/a\
 \
