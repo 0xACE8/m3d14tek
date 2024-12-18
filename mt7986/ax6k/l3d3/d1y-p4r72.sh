@@ -26,7 +26,7 @@ uci -q batch <<-EOF\
 EOF' package/lean/default-settings/files/zzz-default-settings
 
 # Change ash to bash
-sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
+sed -i 's/\/ash/\/bash/g' package/base-files/files/etc/passwd
 
 # Boost UDP
 echo '# optimize udp' >>package/base-files/files/etc/sysctl.d/10-default.conf
