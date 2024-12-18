@@ -60,7 +60,7 @@ sed -i 's/3600/0/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 # nas
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
-sed -i 's/rcd -vv/\\tprocd_append_param command "--rc-web-gui"/g' feeds/packages/net/rclone/files/rclone.init
+sed -i '/rcd -vv/a \\tprocd_append_param command "--rc-web-gui"/' feeds/packages/net/rclone/files/rclone.init
 
 
 # Change to my banner
