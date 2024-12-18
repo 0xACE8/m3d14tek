@@ -8,6 +8,7 @@
 sed -i 's/192.168.1.1/192.168.177.1/g' package/base-files/luci2/bin/config_generate
 sed -i "s/ip6assign='60'/ip6assign='64'/g" package/base-files/luci2/bin/config_generate
 sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-files/luci2/bin/config_generate
+sed -i 's/2:-dhcp/2:-pppoe/g' package/base-files/luci2/bin/config_generate
 
 # Modify Hostname
 sed -i 's/LEDE/Redmi_AX6000/g' package/base-files/luci2/bin/config_generate
@@ -17,16 +18,17 @@ sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/w
 
 
 # Change language=auto to zh_cn & Change ash to bash
-sed -i '/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./d' package/lean/default-settings/files/zzz-default-settings
-sed -i '/uci commit system/a\
-\
-uci -q batch <<-EOF\
-    set luci.main.lang="zh_cn"\
-    commit luci\
-EOF' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/\/ash/\/bash/g' package/base-files/files/etc/passwd
+# sed -i '/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./d' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/uci commit system/a\
+#\
+#uci -q batch <<-EOF\
+#    set luci.main.lang="zh_cn"\
+#    commit luci\
+#EOF' package/lean/default-settings/files/zzz-default-settings
 
 # Change ash to bash
-sed -i 's/\/ash/\/bash/g' package/base-files/files/etc/passwd
+
 
 # Boost UDP
 echo '# optimize udp' >>package/base-files/files/etc/sysctl.d/10-default.conf
