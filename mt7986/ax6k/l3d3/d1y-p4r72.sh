@@ -91,7 +91,8 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/r3dm1_ax6000/argon/icon/ms-icon-144x144.png"
 
 # upgrade config
-wget --no-check-certificate -O package/base-files/files/etc/uci-defaults/zzz-updata-settings-lede "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/l3d3/zzz-updata-settings"
+rm -rf package/lean/default-settings/files/zzz-default-settings
+wget --no-check-certificate -O package/lean/default-settings/files/zzz-default-settings "https://raw.githubusercontent.com/0xACE8/m3d14tek/main/mt7986/ax6k/l3d3/zzz-updata-settings"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/refs/heads/main/30-sysinfo.sh"
 wget --no-check-certificate -O feeds/packages/utils/bash/files/etc/profile.d/50-cloud.sh "https://raw.githubusercontent.com/0xACE8/0p3nwrt-general/main/50-cloud.sh"
 
