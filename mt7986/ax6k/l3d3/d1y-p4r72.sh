@@ -12,7 +12,7 @@ sed -i "s/globals.ula_prefix='auto'/globals.packet_steering='1'/g" package/base-
 # Modify Hostname
 sed -i 's/LEDE/Redmi_AX6000/g' package/base-files/luci2/bin/config_generate
 #sed -i 's/LEDE/太阳从西边升起/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-sed -i 's/encryption=none/a \\t\t\tset wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/encryption=none/a \\t\t\tset wireless.default_radio${devidx}.key='password'" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 
