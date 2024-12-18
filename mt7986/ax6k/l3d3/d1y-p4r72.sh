@@ -40,6 +40,7 @@ echo 'net.core.netdev_max_backlog=2048' >>package/base-files/files/etc/sysctl.d/
 sed -i '/interface}/d' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
+sed -i 's/services/system/g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 sed -i '4 i\\t\t"order": 89,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
 # change navbar 'VPN' to 'NAT'
