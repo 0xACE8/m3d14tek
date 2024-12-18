@@ -45,29 +45,13 @@ EOF
 #bash /bin/genwancfg
 
 
-#/etc/init.d/mosdns stop
-#/etc/init.d/dnscrypt-proxy stop
-#/etc/init.d/zerotier stop
-#/etc/init.d/tailscale stop
-#/etc/init.d/ddns-go stop
-#/etc/init.d/passwall2 stop
-#/etc/init.d/dropbear stop
-
-
 # fix distfeeds
 sed -i "/ace8/d" /etc/opkg/distfeeds.conf
 sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
 
-#cat > /etc/opkg/distfeeds.conf <<-"EOF"
-#src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/base
-#src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/luci
-#src/gz immortalwrt_packages https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/packages
-#src/gz immortalwrt_routing https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/routing
-#src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/mips_24kc/telephony
-#EOF
 
-sysupgrade -f /etc/backup/redmi_ax6000-512mb-mini.tar.gz
-rm -rf /etc/backup
+#sysupgrade -f /etc/backup/redmi_ax6000-512mb-mini.tar.gz
+#rm -rf /etc/backup
 
 #sed -i '/exit 0/d' /etc/rc.local
 #cat >> /etc/rc.local <<-"EOF"
@@ -78,13 +62,6 @@ rm -rf /etc/backup
 
 #exit 0
 #EOF
-
-#uci commit mosdns
-#uci commit argon
-#uci commit dhcp
-#uci commit system
-#uci commit network
-#uci commit firewall
 
 /etc/init.d/network restart
 /etc/init.d/dnsmasq restart
