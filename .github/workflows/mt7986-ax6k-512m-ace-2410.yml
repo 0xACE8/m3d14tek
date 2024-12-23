@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 ax6k 512m 24.10 aceywrt Atcions
+name: Build mt7986 ax6k 512m 24.10 anna Atcions
 
 on:
   repository_dispatch:
@@ -18,8 +18,8 @@ on:
         description: 'SSH connection to Actions'
         required: true
         default: 'false'
-  schedule:
-    - cron: 0 9 * * 0
+#  schedule:
+#    - cron: 0 17 * * 0
 
 env:
   REPO_URL: https://github.com/0xACE8/1mm0rt4lwrt-24.10-ax6k-512mb
@@ -31,7 +31,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
-  OPENWRT_NAME: aceywrt_512m_2410
+  OPENWRT_NAME: annawrt_512m_2410
 
 jobs:
   build:
@@ -40,6 +40,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      with:
+        fetch-depth: 0
 
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
@@ -99,11 +101,14 @@ jobs:
         sed -i 's/Turbo ACC 网络加速/网络加速/g' package/turboacc/luci-app-turboacc/po/zh-cn/turboacc.po
 
     - name: Cache
-      uses: stupidloud/cachewrtbuild@main
+      uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'ax6k24ace'
-        prefix: 'openwrt'
+        toolchain: 'true'
+        skip: 'true'
+        clean: 'false'
+        mixkey: 'anna2410im'
+        prefix: '${{ github.workspace }}/openwrt'
 
     - name: Load custom feeds
       run: |
@@ -125,6 +130,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        echo -e 'CONFIG_CCACHE=y' >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -140,7 +146,7 @@ jobs:
         sed -i 's/root:::0:99999:7:::/root:${{ secrets.SSH_PASSWORD }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
         sed -i 's/pppoe_username/${{ secrets.PPPOE_CT_USERNAME }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
         sed -i 's/pppoe_password/${{ secrets.PPPOE_CT_PASSWORD }}/g' package/base-files/files/etc/uci-defaults/zzz-updata-settings
-        git clone --branch redmi_ax6000 https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
+#        git clone --branch redmi_ax6000 https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git package/base-files/files/etc/backup
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -175,7 +181,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20aceywrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=⛔%20固件编译失败!%20⛔%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20annawrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}"
 
     - name: Check space usage
       if: (!cancelled())
@@ -210,7 +216,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: aceywrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}
+        name: annawrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Telegram notification
@@ -219,6 +225,6 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: |
-        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20aceywrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}"
+        curl -i -X GET "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&format=markdown&text=✅%20固件顺利编译完成!%20✅%0A目标用户:%200xACE8%0A资源仓库:%20${{ github.repository }}%0A固件名称:%20annawrt-2410-mt7986-redmi_ax6000-512m-sysupgrade${{ env.FILE_DATE }}"
 
         
