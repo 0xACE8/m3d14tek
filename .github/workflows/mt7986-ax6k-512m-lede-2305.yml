@@ -40,6 +40,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      with:
+        fetch-depth: 0
 
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
@@ -93,11 +95,14 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Cache
-      uses: stupidloud/cachewrtbuild@main
+      uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
+        toolchain: 'true'
+        skip: 'true'
+        clean: 'false'
         mixkey: 'ax6klede'
-        prefix: 'openwrt'
+        prefix: '${{ github.workspace }}/openwrt'
 
     - name: Load custom feeds
       run: |
