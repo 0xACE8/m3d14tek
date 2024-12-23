@@ -25,7 +25,7 @@ env:
   REPO_URL: https://github.com/0xACE8/p4d4v4n0nly-xr30
   REPO_BRANCH: main
   FEEDS_CONF: mt7981/cmcc-xr30/2305/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7981/cmcc-xr30/2305/xr30ace2305.conf
+  CONFIG_FILE: mt7981/cmcc-xr30/2305/xr30anna2305.conf
   DIY_P1_SH: mt7981/cmcc-xr30/2305/d1y-p4r71.sh
   DIY_P2_SH: mt7981/cmcc-xr30/2305/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
