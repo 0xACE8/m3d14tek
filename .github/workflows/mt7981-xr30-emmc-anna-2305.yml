@@ -105,11 +105,11 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
-        toolchain: 'true'
-        skip: 'true'
-        clean: 'false'
         mixkey: 'anna2305'
         prefix: '${{ github.workspace }}/openwrt'
+#        toolchain: 'true'
+#        skip: 'true'
+#        clean: 'false'
 
     - name: Load custom feeds
       run: |
@@ -131,7 +131,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        echo -e 'CONFIG_CCACHE=y' >> openwrt/.config
+        echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
