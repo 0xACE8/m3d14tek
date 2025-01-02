@@ -8,7 +8,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build mt7986 ax6k 512m 23.05 padawanonly Atcions
+name: Build mt7986 ax6k 512m mini 23.05 padawanonly Atcions
 
 on:
   repository_dispatch:
@@ -25,13 +25,13 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: mt7986/ax6k/p4n4v4n0nly/23.05/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/23.05/ax6k_poi_512m.c0nf
+  CONFIG_FILE: mt7986/ax6k/p4n4v4n0nly/23.05/ax6k_poi_512m_mini.c0nf
   DIY_P1_SH: mt7986/ax6k/p4n4v4n0nly/23.05/d1y-p4r71.sh
   DIY_P2_SH: mt7986/ax6k/p4n4v4n0nly/23.05/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: "America/Los_Angeles"
-  OPENWRT_NAME: padavanonly_512m_2305
+  OPENWRT_NAME: padavanonly_512m_mini_2305
 
 jobs:
   build:
