@@ -24,12 +24,12 @@ on:
 env:
   REPO_URL: https://github.com/0xACE8/1mm0rt4lwrt-24.10-ax6k-512mb
   REPO_BRANCH: main
-  FEEDS_CONF: mt7986/ax6k/4c3ywrt/f33d5.c0nf.d3f4ult
-  CONFIG_FILE: mt7986/ax6k/4c3ywrt/ax6k_im_512m.c0nf
-  DIY_P1_SH: mt7986/ax6k/4c3ywrt/d1y-p4r71.sh
-  DIY_P2_SH: mt7986/ax6k/4c3ywrt/d1y-p4r72.sh
+  FEEDS_CONF: mt7986/ax6k/1mm0rt4lwrt/f33d5.c0nf.d3f4ult
+  CONFIG_FILE: mt7986/ax6k/1mm0rt4lwrt/ax6k_im_2410.c0nf
+  DIY_P1_SH: mt7986/ax6k/1mm0rt4lwrt/d1y-p4r71.sh
+  DIY_P2_SH: mt7986/ax6k/1mm0rt4lwrt/d1y-p4r72.sh
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
+  UPLOAD_FIRMWARE: false
   TZ: "America/Los_Angeles"
   OPENWRT_NAME: annawrt_512m_2410
 
@@ -104,11 +104,12 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
+        toolchain: 'true'
+        skip: 'true'
+        clean: 'false'        
         mixkey: 'anna2410im'
         prefix: '${{ github.workspace }}/openwrt'
-#        toolchain: 'true'
-#        skip: 'true'
-#        clean: 'false'
+
 
     - name: Load custom feeds
       run: |
